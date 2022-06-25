@@ -1,0 +1,47 @@
+library(tidyverse)
+library(readxl)
+library(stargazer)
+
+df <- read_excel("data/dropped_data.xlsx")
+
+summary(lm(NFatal ~ 1 + camera_count + factor(region), data=df))
+summary(lm(NFatal ~ 1 + camera_count + factor(region) + factor(DTPType) + NPatricipants, data=df))
+summary(lm(NFatal ~ 1 + camera_count + factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(lm(NFatal ~ 1 + camera_count * factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(lm(NFatal ~ 1 + camera_count * factor(region), data=df))
+
+summary(lm(NInjured ~ 1 + camera_count + factor(region), data=df))
+summary(lm(NInjured ~ 1 + camera_count + factor(region) + factor(DTPType) + NPatricipants, data=df))
+summary(lm(NInjured ~ 1 + camera_count + factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(lm(NInjured ~ 1 + camera_count * factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(lm(NInjured ~ 1 + camera_count * factor(region), data=df))
+
+summary(lm(severity ~ 1 + camera_count + factor(region), data=df))
+summary(lm(severity ~ 1 + camera_count + factor(region) + factor(DTPType) + NPatricipants, data=df))
+summary(lm(severity ~ 1 + camera_count + factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(lm(severity ~ 1 + camera_count * factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(lm(severity ~ 1 + camera_count * factor(region), data=df))
+
+summary(lm(severity ~ 1 + camera_count + factor(region), data=df))
+summary(lm(severity ~ 1 + camera_count + factor(region) + factor(DTPType) + NPatricipants, data=df))
+summary(lm(severity ~ 1 + camera_count + factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(lm(severity ~ 1 + camera_count * factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(lm(severity ~ 1 + camera_count * factor(region), data=df))
+
+summary(glm(family=binomial(link="probit"), severity ~ 1 + camera_count + factor(region), data=df))
+summary(glm(family=binomial(link="probit"), severity ~ 1 + camera_count + factor(region) + factor(DTPType) + NPatricipants, data=df))
+summary(glm(family=binomial(link="probit"), severity ~ 1 + camera_count + factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(glm(family=binomial(link="probit"), severity ~ 1 + camera_count * factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(glm(family=binomial(link="probit"), severity ~ 1 + camera_count * factor(region), data=df))
+
+summary(glm(family=binomial(link="logit"), severity ~ 1 + camera_count + factor(region), data=df))
+summary(glm(family=binomial(link="logit"), severity ~ 1 + camera_count + factor(region) + factor(DTPType) + NPatricipants, data=df))
+summary(glm(family=binomial(link="logit"), severity ~ 1 + camera_count + factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(glm(family=binomial(link="logit"), severity ~ 1 + camera_count * factor(region) + factor(DTPType) + factor(pokritie) + factor(weatherConditions) + factor(placeConditions) + NPatricipants, data=df))
+summary(glm(family=binomial(link="logit"), severity ~ 1 + camera_count * factor(region), data=df))
+
+# stargazer(linearFat1, linearFat2, linearFat3, linearFat4, linearFat5, title="Results", align=TRUE)
+# stargazer(linearInj1, linearInj2, linearInj3, linearInj4, linearInj5, title="Results", align=TRUE)
+# stargazer(linearSev1, linearSev2, linearSev3, linearSev4, linearSev5, title="Results", align=TRUE)
+# stargazer(probit1, probit2, probit3, probit4, probit5, title="Results", align=TRUE)
+# stargazer(logit1, logit2, logit3, logit4, logit5, title="Results", align=TRUE)
